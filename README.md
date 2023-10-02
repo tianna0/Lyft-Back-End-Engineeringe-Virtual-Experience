@@ -4,8 +4,8 @@ This repo contains the codebase of the tasks included in the virtual experience 
 ## Tasks
 1. Draft a new architecture
 2. Refactor the codebase to reflect the new design
-3. Add unit tests to the codebase
-4. Add new functionality
+3. Write unit tests for the newly refactored system
+4. Add new functionality using TDD
    - Upgrade Spindler batteries
    - Add tire servicing criteria
 
