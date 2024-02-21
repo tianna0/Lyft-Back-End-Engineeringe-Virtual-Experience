@@ -1,17 +1,11 @@
-import unittest
-
 from engine.willoughby_engine import WilloughbyEngine
 
+def test_needs_service_true():
+    # Test case where the mileage difference is more than 60000, expecting service need
+    engine = WilloughbyEngine(current_mileage=100000, last_service_mileage=39000)
+    assert engine.needs_service() is True, "Engine should need service due to high mileage difference"
 
-class TestWilloughbyEngine(unittest.TestCase):
-    def test_needs_service_true(self):
-        current_mileage = 60001
-        last_service_mileage = 0
-        engine = WilloughbyEngine(current_mileage, last_service_mileage)
-        self.assertTrue(engine.needs_service())
-
-    def test_needs_service_false(self):
-        current_mileage = 60000
-        last_service_mileage = 0
-        engine = WilloughbyEngine(current_mileage, last_service_mileage)
-        self.assertFalse(engine.needs_service())
+def test_needs_service_false():
+    # Test case where the mileage difference is not more than 60000, expecting no service need
+    engine = WilloughbyEngine(current_mileage=95000, last_service_mileage=35000)
+    assert engine.needs_service() is False, "Engine should not need service as the mileage difference is within limits"

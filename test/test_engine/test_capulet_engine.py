@@ -1,17 +1,11 @@
-import unittest
-
 from engine.capulet_engine import CapuletEngine
 
+def test_needs_service_true():
+    # Mileage difference is more than 30000
+    engine = CapuletEngine(current_mileage=60000, last_service_mileage=29000)
+    assert engine.needs_service() == True, "Expected to need service"
 
-class TestCapuletEngine(unittest.TestCase):
-    def test_needs_service_true(self):
-        current_mileage = 30001
-        last_service_mileage = 0
-        engine = CapuletEngine(current_mileage, last_service_mileage)
-        self.assertTrue(engine.needs_service())
-
-    def test_needs_service_false(self):
-        current_mileage = 30000
-        last_service_mileage = 0
-        engine = CapuletEngine(current_mileage, last_service_mileage)
-        self.assertFalse(engine.needs_service())
+def test_needs_service_false():
+    # Mileage difference is 30000 or less
+    engine = CapuletEngine(current_mileage=50000, last_service_mileage=20000)
+    assert engine.needs_service() == False, "Expected not to need service"
